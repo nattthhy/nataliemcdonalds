@@ -1,0 +1,77 @@
+<!-- header.php -->
+<?php
+session_start();
+$usuario_logado = $_SESSION['email'] ?? null;
+$tipo_usuario = $_SESSION['tipo'] ?? null; // 'admin', 'anunciante', 'comprador'
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketplace Acadêmico</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+        }
+        header {
+            background-color: #ff5722;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        .user-info {
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="listar_produtos.php">
+            <img src="logo.png" alt="Logo">
+        </a>
+        <h2>Marketplace Acadêmico</h2>
+    </div>
+    <nav class="menu">
+        <a href="listar_produtos.php">🏠 Início</a>
+        <a href="carrinho.php">🛒 Carrinho</a>
+
+        <?php if ($usuario_logado && ($tipo_usuario === 'admin' || $tipo_usuario === 'anunciante')): ?>
+            <a href="teste.php">📢 Anunciar</a>
+        <?php endif; ?>
+
+        <?php if ($usuario_logado): ?>
+            <a href="logout.php">🚪 Sair</a>
+            <span class="user-info"><?= htmlspecialchars($usuario_logado) ?> (<?= htmlspecialchars($tipo_usuario) ?>)</span>
+        <?php else: ?>
+            <a href="login.php">🔐 Login</a>
+        <?php endif; ?>
+    </nav>
+</header>
