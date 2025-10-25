@@ -40,19 +40,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
 body{
-    font-family: "Barrio", system-ui;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(login.jpg);
+    background: url(./mac.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -172,5 +170,4 @@ body{
     </form>
 </div>
 </body>
-
 </html>s
